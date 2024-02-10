@@ -15,12 +15,14 @@
 
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ionicons@5.1.2/dist/css/ionicons.min.css">
     @yield('css')
     <script>
-        window.APP = <?php echo json_encode([
-                            'currency_symbol' => config('settings.currency_symbol'),
-                            'warning_quantity' => config('settings.warning_quantity')
-                        ]) ?>
+        window.APP = < ? php echo json_encode([
+            'currency_symbol' => config('settings.currency_symbol')
+            , 'warning_quantity' => config('settings.warning_quantity')
+        ]) ? >
+
     </script>
 </head>
 
@@ -44,9 +46,7 @@
                         </div><!-- /.col -->
                     </div>
                 </div><!-- /.container-fluid -->
-            </section
-
-            <!-- Main content -->
+            </section <!-- Main content -->
             <section class="content">
                 @include('layouts.partials.alert.success')
                 @include('layouts.partials.alert.error')
@@ -63,8 +63,7 @@
             <!-- Control sidebar content goes here -->
         </aside>
         <!-- /.control-sidebar -->
-    </div
-    <!-- ./wrapper -->
+    </div <!-- ./wrapper -->
 
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('js')

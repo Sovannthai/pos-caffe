@@ -59,8 +59,8 @@
             </div>
         </div>
         <hr>
-        <table class="table table-btransactioned table-hover">
-            <thead class="thead-dark">
+        <table class="table table-btransactioned table-hover table-bordered">
+            <thead class="thead-dark text-uppercase">
                 <tr>
                     <th>ID</th>
                     <th>Customer Name</th>
@@ -95,15 +95,16 @@
                     <td>
                         <div style="display:flex;">
                             <span>
-                                <a href="" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop"><i class="fas fa-edit"></i></a>
+                                <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#staticBackdrop"><i class="fas fa-edit"></i></a>
                             </span>
-                            {{-- modal --}}
-                            {{-- @include('transactions.show') --}}
+                            <span>
+                                <a href="" class="btn btn-secondary btn-sm ml-2"><i class="fas fa-eye"></i></a>
+                            </span>
                             <span>
                                 <form action="" method="post">
                                     @csrf
                                     @method('delete')
-                                    <button class="btn btn-danger btn-md text-uppercase" type="submit"> <i class="fas fa-trash"></i></button>
+                                    <button class="btn btn-danger btn-md text-uppercase btn-sm ml-2" type="submit"> <i class="fas fa-trash"></i></button>
                                 </form>
                             </span>
                         </div>
@@ -116,11 +117,11 @@
                     <th></th>
                     <th></th>
                     <th></th>
+                    <th>Total Paid:  {{ config('settings.currency_symbol') }} {{$totalpaid}}</th>
                     <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+                    <th>Total Discount:  {{ config('settings.currency_symbol') }} {{$discount}}</th>
+                    <th>Subtotal:  {{ config('settings.currency_symbol') }} {{$subtotal}}</th>
+                    <th>Total Paid:  {{ config('settings.currency_symbol') }} {{$total_amount}}</th>
                     <th></th>
                 </tr>
             </tfoot>

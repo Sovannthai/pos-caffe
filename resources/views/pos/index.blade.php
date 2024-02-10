@@ -99,7 +99,7 @@
                 </div>
                 <div class=" form-group col-3" style="position: relative;
                 left: 300px;">
-                    <a href="{{ route('home') }}" class="btn btn-secondary">Back</a>
+                    <a href="{{ route('transaction.index') }}" class="btn btn-secondary">Back</a>
                 </div>
             </div>
         </div>
@@ -230,6 +230,19 @@
                 $(`#table-cart tbody`).append(html);
             }
         });
+
+        // Function to update subtotal and total quantity
+        function updateTotal(price, quantity) {
+            var subtotal = parseFloat($('.sub_total').text());
+            var total_qty = parseInt($('.total_qty').text());
+
+            subtotal += (price * quantity);
+            total_qty += quantity;
+
+            $('.sub_total').text(subtotal);
+            $('.total_qty').text(total_qty);
+        }
+
         $(document).on('click', '.cancel', function() {
             $('#table-cart').find('tbody tr').remove();
         })

@@ -20,7 +20,7 @@ class PosController extends Controller
 {
     public function index(Request $request)
     {
-        
+
         $tables = Table::all();
         $customers = Customer::all();
         $products = Product::where('status',1)->get();
@@ -32,6 +32,7 @@ class PosController extends Controller
 
     public function checkout(Request $request)
     {
+        // dd($request->all());
         DB::beginTransaction();
         try {
             $subtotal = $request->input('subtotal');
