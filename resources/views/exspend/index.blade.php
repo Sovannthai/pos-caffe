@@ -12,7 +12,7 @@
     <div class="card">
         <div class="card-body">
             <table class="table table-bordered">
-                <thead class=" table-dark">
+                <thead class=" table-dark text-uppercase">
                     <tr class="text-center">
                         <th>Name</th>
                         <th>Amount</th>
@@ -36,12 +36,12 @@
                             <div style="position: relative;">
                                     <span style="display: inline-flex">
                                         <a href="{{route('exspend.edit',$exspend->id)}}"
-                                            class=" btn btn-primary btn-md text-uppercase"><i class="fas fa-edit"></i></a>
+                                            class=" btn btn-primary btn-sm text-uppercase"><i class="fas fa-edit"></i></a>
                                         <span class="dl">
                                             <form action="{{ route('exspend.destroy', $exspend->id) }}" method="post">
                                                 @csrf
-                                                @method('delete')
-                                                <button class="btn btn-danger btn-md text-uppercase" type="submit"> <i
+                                                @method('DELETE')
+                                                <button class="btn btn-danger btn-sm ml-1 text-uppercase" type="submit"> <i
                                                         class="fas fa-trash"></i></button>
                                             </form>
                                         </span>
@@ -53,7 +53,7 @@
                 </tbody>
                 <tfoot class="text-center">
                     <th></th>
-                    <th>Total:  {{ config('settings.currency_symbol') }}{{$total}}</th>
+                    <th>Total:  {{ config('settings.currency_symbol') }}{{$total,2}}</th>
                     <th></th>
                     <th></th>
                     <th></th>

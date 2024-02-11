@@ -61,9 +61,9 @@ class CustomerController extends Controller
         ]);
 
         if (!$customer) {
-            return redirect()->back()->with('error', 'Sorry, Something went wrong while creating customer.');
+            return redirect()->back()->with('error', 'Someting Went wrong!');
         }
-        return redirect()->route('customers.index')->with('success', 'Success, New customer has been added successfully!');
+        return redirect()->route('customers.index')->with('success', 'Customer created successfully!');
     }
 
     /**
@@ -114,9 +114,9 @@ class CustomerController extends Controller
         }
 
         if (!$customer->save()) {
-            return redirect()->back()->with('error', 'Sorry, Something went wrong while updating the customer.');
+            return redirect()->back()->with('error', 'Something went wrong!');
         }
-        return redirect()->route('customers.index')->with('success', 'Success, The customer has been updated.');
+        return redirect()->route('customers.index')->with('success', 'Customer updated successfully!');
     }
 
     public function destroy(Customer $customer)
@@ -127,8 +127,6 @@ class CustomerController extends Controller
 
         $customer->delete();
 
-       return response()->json([
-           'success' => true
-       ]);
+       return redirect()->route('customers.index')->with('success','Customer deleted successfully!');
     }
 }

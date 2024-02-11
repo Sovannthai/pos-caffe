@@ -71,7 +71,7 @@ class ProductController extends Controller
             'unit_id'=>$request->unit_id,
         ]);
         if (!$product) {
-            return redirect()->back()->with('error', 'Sorry, Something went wrong while creating product.');
+            return redirect()->back()->with('error','Something went wrong!');
         }
         return redirect()->route('products.index')->with('success', 'Product created successfully!');
 
@@ -132,7 +132,7 @@ class ProductController extends Controller
         }
 
         if (!$product->save()) {
-            return redirect()->back()->with('error', 'Sorry, Something went wrong while updating product.');
+            return redirect()->back()->with('error', 'Someting went wrong!');
         }
         return redirect()->route('products.index')->with('success', 'Product updated successfully!');
     }
