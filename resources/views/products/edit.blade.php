@@ -18,7 +18,7 @@
                 @csrf
                 @method('PUT')
                 <div class="row">
-                    <div class="form-group col-3">
+                    <div class="form-group col-4">
                         <label for="name">Name</label>
                         <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
                             id="name" placeholder="Name" value="{{ old('name', $product->name) }}">
@@ -28,7 +28,7 @@
                             </span>
                         @enderror
                     </div>
-                    {{-- <div class="form-group col-3">
+                    {{-- <div class="form-group col-4">
                         <label for="barcode">Barcode</label>
                         <input type="text" name="barcode" class="form-control @error('barcode') is-invalid @enderror"
                             id="barcode" placeholder="barcode" value="{{ old('barcode', $product->barcode) }}">
@@ -39,7 +39,7 @@
                         @enderror
                     </div> --}}
 
-                    <div class="form-group col-3">
+                    <div class="form-group col-4">
                         <label for="image">Image</label>
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" name="image" id="image">
@@ -51,7 +51,7 @@
                             </span>
                         @enderror
                     </div>
-                    <div class="form-group col-3">
+                    <div class="form-group col-4">
                         <label for="">Category</label>
                         <select name="category_id" id="" class="form-control">
                             @foreach ($categorys as $category)
@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-3">
+                    <div class="form-group col-4">
                         <label for="">Unit</label>
                         <select name="unit_id" class="form-control">
                             @foreach ($units as $unit)
@@ -69,7 +69,7 @@
                             @endforeach
                         </select>
                     </div>
-                <div class="form-group col-3">
+                <div class="form-group col-4">
                     <label for="price">Price</label>
                     <input type="text" name="price" class="form-control @error('price') is-invalid @enderror"
                         id="price" placeholder="price" value="{{ old('price', $product->price) }}">
@@ -80,7 +80,7 @@
                     @enderror
                 </div>
 
-                {{-- <div class="form-group col-3">
+                {{-- <div class="form-group col-4">
                     <label for="quantity">Quantity</label>
                     <input type="text" name="quantity" class="form-control @error('quantity') is-invalid @enderror"
                         id="quantity" placeholder="Quantity" value="{{ old('quantity', $product->quantity) }}">
@@ -91,7 +91,7 @@
                     @enderror
                 </div> --}}
 
-                <div class="form-group col-3">
+                <div class="form-group col-4">
                     <label for="status">Status</label>
                     <select name="status" class="form-control @error('status') is-invalid @enderror" id="status">
                         <option value="1" {{ old('status', $product->status) === 1 ? 'selected' : '' }}>Active
@@ -117,8 +117,8 @@
                         </span>
                     @enderror
                 </div>
-
-                <button class="btn btn-success" type="submit" style="position: relative;left:74.2vw; width:90px;">Update</button>
+                <a href="{{ route('products.index') }}" class="btn btn-secondary">Cancel</a>
+                <button class="btn btn-success" type="submit">Update</button>
             </form>
         </div>
     </div>

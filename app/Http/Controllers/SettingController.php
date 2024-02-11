@@ -21,6 +21,6 @@ class SettingController extends Controller
             $setting->save();
         }
 
-        return redirect()->route('settings.index');
+        return redirect()->route('settings.index')->with('success','Setting updated successfully!');
     }
 }

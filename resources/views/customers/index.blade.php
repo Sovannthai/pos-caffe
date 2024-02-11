@@ -37,9 +37,9 @@
                         <td>{{$customer->address}}</td>
                         <td>{{$customer->created_at}}</td>
                         <td>
-                            <a href="{{ route('customers.edit', $customer) }}" class="btn btn-primary"><i
+                            <a href="{{ route('customers.edit', $customer) }}" class="btn btn-primary btn-sm"><i
                                     class="fas fa-edit"></i></a>
-                            <button class="btn btn-danger btn-delete" data-url="{{route('customers.destroy', $customer)}}"><i
+                            <button class="btn btn-danger btn-delete btn-sm" data-url="{{route('customers.destroy', $customer)}}"><i
                                     class="fas fa-trash"></i></button>
                         </td>
                     </tr>

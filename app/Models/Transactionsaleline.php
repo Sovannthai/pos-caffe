@@ -13,7 +13,7 @@ class Transactionsaleline extends Model
 
     public function transaction()
     {
-        return $this->hasMany(Transaction::class);
+        return $this->belongsTo(Transaction::class,'transaction_id');
     }
     public function product()
     {

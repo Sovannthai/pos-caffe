@@ -24,7 +24,7 @@ Transaction extends Model
     ];
 
     public function Transactionsaleline(){
-        return $this->belongsTo(Transactionsaleline::class);
+        return $this->hasMany(Transactionsaleline::class);
     }
      public function customer()
      {

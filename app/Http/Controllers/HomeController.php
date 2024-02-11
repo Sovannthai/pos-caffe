@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Order;
-use App\Models\Customer;
 use App\Models\Product;
+use App\Models\Customer;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,26 +28,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $orders = Order::with(['items', 'payments'])->get();
-        $customers_count = Customer::count();
-        $products_count = Product::count();
-
-        return view('home', [
-            'orders_count' => $orders->count(),
-            'income' => $orders->map(function($i) {
-                if($i->receivedAmount() > $i->total()) {
-                    return $i->total();
-                }
-                return $i->receivedAmount();
-            })->sum(),
-            'income_today' => $orders->where('created_at', '>=', date('Y-m-d').' 00:00:00')->map(function($i) {
-                if($i->receivedAmount() > $i->total()) {
-                    return $i->total();
-                }
-                return $i->receivedAmount();
-            })->sum(),
-            'customers_count' => $customers_count,
-            'products_count' => $products_count
-        ]);
+        $product = Product::count();
+        $transactions = Transaction::count();
+        $transaction = Transaction::all();
+        $total_income = $transaction->sum('total');
+        $customers = Customer::count();
+        $total_paid = $transaction->sum('total_paid');
+        $total_amount_today = $transaction->sum('total');
+        $total_due = 0;
+        foreach ($transaction as $trans) {
+            $total_due += $trans->total - $trans->total_paid;
+        }
+        return view('home', compact('product', 'transactions', 'total_income', 'total_amount_today', 'customers', 'total_paid','total_due'));
     }
 }

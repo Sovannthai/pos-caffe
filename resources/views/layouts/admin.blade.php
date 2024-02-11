@@ -66,6 +66,40 @@
     </div <!-- ./wrapper -->
 
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        const Toast = Swal.mixin({
+            toast: true
+            , position: 'top-right',
+            // iconColor: 'white',
+            customClass: {
+                popup: "colored-toast {{ (config('app.dark_mode') == 1 ? 'dark-colored-toast' : '') }}"
+            }
+            , showConfirmButton: false
+            , timer: 4000
+            , timerProgressBar: true
+            , didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        , });
+
+        @if(Session::get('success'))
+        Toast.fire({
+            icon: 'success'
+            , title: `{{ Session::get('success') }}`,
+            // message: ,
+        });
+        @endif
+        @if(Session::get('error'))
+        Toast.fire({
+            icon: 'error'
+            , title: `{{ Session::get('error') }}`,
+            // message: ,
+        });
+        @endif
+
+    </script>
     @yield('js')
 </body>
 

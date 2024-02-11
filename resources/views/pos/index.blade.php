@@ -74,19 +74,19 @@
     <div class="card" style="background-color: #ff7423fc;;">
         <div class="card-body" style="height: 80px;">
             <div class="row">
-                <div class=" form-group col-3">
-                    <select name="customer_id" class="form-control">
+                <div class="form-group col-3">
+                    <select name="customer_id" class="form-control selected-customer">
                         <option value="">General Customer...</option>
                         @foreach ($customers as $customer)
-                        <option value="{{ $customer->id }}" id="selected_customer_id">{{ $customer->first_name }} {{ $customer->last_name }}</option>
+                        <option value="{{ $customer->id }}">{{ $customer->first_name }} {{ $customer->last_name }}</option>
                         @endforeach
                     </select>
                 </div>
-                <div class=" form-group col-3">
-                    <select name="customer_id" class="form-control">
+                <div class="form-group col-3">
+                    <select name="table_id" class="form-control selected-table">
                         <option value="">Select Table...</option>
                         @foreach ($tables as $table)
-                        <option value="{{ $table->id }}" id="selected_table_id">{{ $table->table_name }}</option>
+                        <option value="{{ $table->id }}">{{ $table->table_name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -145,8 +145,8 @@
         var amount = 0;
         $(document).on('click', '.checkout', function() {
             // Get the subtotal, total quantity, and amount data
-            var customer = $('#selected_customer_id').val();
-            var table = $('#selected_table_id').val();
+            var customer = $('.selected-customer').val();
+            var table = $('.selected-table').val();
             var subtotal = $('#sub_total').text();
             var totalQty = $('.total_qty').text();
             var total = $('#sub_total').text();

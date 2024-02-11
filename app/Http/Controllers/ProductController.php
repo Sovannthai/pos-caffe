@@ -73,7 +73,7 @@ class ProductController extends Controller
         if (!$product) {
             return redirect()->back()->with('error', 'Sorry, Something went wrong while creating product.');
         }
-        return redirect()->route('products.index')->with('success', 'Success, New product has been added successfully!');
+        return redirect()->route('products.index')->with('success', 'Product created successfully!');
 
     }
 
@@ -134,7 +134,7 @@ class ProductController extends Controller
         if (!$product->save()) {
             return redirect()->back()->with('error', 'Sorry, Something went wrong while updating product.');
         }
-        return redirect()->route('products.index')->with('success', 'Success, Product has been updated.');
+        return redirect()->route('products.index')->with('success', 'Product updated successfully!');
     }
 
     /**
@@ -150,9 +150,7 @@ class ProductController extends Controller
         }
         $product->delete();
 
-        return response()->json([
-            'success' => true
-        ]);
+        return redirect()->route('products.index')->with('success','Product deleted successfully!');
     }
 
 

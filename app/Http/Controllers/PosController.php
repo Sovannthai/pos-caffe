@@ -37,7 +37,7 @@ class PosController extends Controller
         try {
             $subtotal = $request->input('subtotal');
             $totalPaid = $request->input('total_paid');
-
+            $totalDue = $subtotal - $totalPaid;
             $status = 'due';
             if ($totalPaid > 0 && $totalPaid < $subtotal) {
                 $status = 'partial';
@@ -50,6 +50,7 @@ class PosController extends Controller
             $transaction->discount = $request->input('discount');
             $transaction->total = $request->input('total');
             $transaction->total_paid = $request->input('total_paid');
+            $transaction->total_due = $totalDue;
             $transaction->status = $status;
             $transaction->table_id = $request->input('table_id');
             $transaction->saler_id = auth()->user()->id;
